@@ -26,5 +26,10 @@ namespace PharmApp
         {
 
         }
+
+        private void ValidationForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

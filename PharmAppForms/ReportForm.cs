@@ -16,5 +16,10 @@ namespace PharmApp
         {
             InitializeComponent();
         }
+
+        private void ReportForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

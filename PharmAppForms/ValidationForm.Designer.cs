@@ -114,6 +114,7 @@
             this.Controls.Add(this.comboBox1);
             this.Name = "ValidationForm";
             this.Text = "ValidationForm";
+            this.Load += new System.EventHandler(this.ValidationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);

@@ -1,0 +1,15 @@
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.csprojAssemblyReference.cache
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.CorrectionForm.resources
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.EntryForm.resources
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.FinForm.resources
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.Properties.Resources.resources
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.ReportForm.resources
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.ValidationForm.resources
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.ViewForm.resources
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.csproj.GenerateResource.cache
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.csproj.CoreCompileInputs.cache
+C:\Users\travi\source\repos\PharmApp\PharmApp\bin\Debug\PharmApp.exe.config
+C:\Users\travi\source\repos\PharmApp\PharmApp\bin\Debug\PharmApp.exe
+C:\Users\travi\source\repos\PharmApp\PharmApp\bin\Debug\PharmApp.pdb
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.exe
+C:\Users\travi\source\repos\PharmApp\PharmApp\obj\Debug\PharmApp.pdb
