@@ -12,9 +12,11 @@ namespace PharmApp
 {
     public partial class FinForm : Form
     {
+        public static FinForm instance;
         public FinForm()
         {
             InitializeComponent();
+            instance = this;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -22,7 +24,13 @@ namespace PharmApp
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Back_Click(object sender, EventArgs e)
+        {
+            EntryForm.instance.Show();
+            this.Hide();
+        }
+
+        private void FinForm_Load(object sender, EventArgs e)
         {
 
         }

@@ -41,6 +41,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(53, 33);
             this.comboBox1.Name = "comboBox1";
@@ -55,7 +56,7 @@
             this.btn_3.TabIndex = 1;
             this.btn_3.Text = "Pass";
             this.btn_3.UseVisualStyleBackColor = true;
-            this.btn_3.Click += new System.EventHandler(this.button1_Click);
+            this.btn_3.Click += new System.EventHandler(this.Pass_Click);
             // 
             // btn_4
             // 
@@ -65,6 +66,7 @@
             this.btn_4.TabIndex = 2;
             this.btn_4.Text = "Fail";
             this.btn_4.UseVisualStyleBackColor = true;
+            this.btn_4.Click += new System.EventHandler(this.Fail_Click);
             // 
             // dataGridView1
             // 
@@ -90,6 +92,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Pull Report";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Pull_Click);
             // 
             // button2
             // 
@@ -99,6 +102,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Main Menu";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Main_Click);
             // 
             // ValidationForm
             // 

@@ -12,13 +12,39 @@ namespace PharmApp
 {
     public partial class ValidationForm : Form
     {
+        public static ValidationForm instance;
         public ValidationForm()
         {
             InitializeComponent();
+            instance = this;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Pull_Click(object sender, EventArgs e)
         {
+
+        }
+        private void Main_Click(object sender, EventArgs e)
+        {
+            EntryForm.instance.Show();
+            this.Hide();
+        }
+        private void Pass_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void Fail_Click(object sender, EventArgs e)
+        { 
+            if (CorrectionForm.instance != null)
+            {
+                CorrectionForm.instance.Show();
+                this.Hide();
+            }
+            else
+            {
+                CorrectionForm correct = new CorrectionForm();
+                correct.Show();
+                this.Hide();
+            }
 
         }
 

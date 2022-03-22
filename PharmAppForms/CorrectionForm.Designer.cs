@@ -84,6 +84,7 @@
             this.Controls.Add(this.checkBox1);
             this.Name = "CorrectionForm";
             this.Text = "CorrectionForm";
+            this.Load += new System.EventHandler(this.CorrectionForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

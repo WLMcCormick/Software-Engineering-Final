@@ -25,24 +25,43 @@ namespace PharmApp
         {
 
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void Submit_Click(object sender, EventArgs e)
         {
             if (sciSel == true)
             {
-                ValidationForm form = new ValidationForm();
-                form.Show();
+                if(ValidationForm.instance != null)
+                {
+                    ValidationForm.instance.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    ValidationForm form = new ValidationForm();
+                    form.Show();
+                    this.Hide();
+                }
             }
             else
             {
-                ReportForm form = new ReportForm();
-                form.Show();
+                ReportForm reports = new ReportForm();
+                reports.Show();
+                this.Hide();
             }
             
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void Final_Click(object sender, EventArgs e)
         {
-            FinForm form = new FinForm();
-            form.Show();
+            if (FinForm.instance != null)
+            {
+                FinForm.instance.Show();
+                this.Hide();
+            }
+            else
+            {
+                FinForm finalized = new FinForm();
+                finalized.Show();
+                this.Hide();
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

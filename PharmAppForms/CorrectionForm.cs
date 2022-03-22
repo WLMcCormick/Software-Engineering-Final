@@ -12,12 +12,19 @@ namespace PharmApp
 {
     public partial class CorrectionForm : Form
     {
+        public static CorrectionForm instance;
         public CorrectionForm()
         {
             InitializeComponent();
+            instance = this;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CorrectionForm_Load(object sender, EventArgs e)
         {
 
         }

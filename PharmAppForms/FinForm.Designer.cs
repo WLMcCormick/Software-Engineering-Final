@@ -60,7 +60,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Back_Click);
             // 
             // FinForm
             // 
@@ -72,6 +72,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "FinForm";
             this.Text = "FinForm";
+            this.Load += new System.EventHandler(this.FinForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
