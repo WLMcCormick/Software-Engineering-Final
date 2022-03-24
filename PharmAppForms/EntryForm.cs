@@ -51,14 +51,14 @@ namespace PharmApp
         }
         private void Final_Click(object sender, EventArgs e)
         {
-            if (FinForm.instance != null)
+            if (StatusForm.instance != null)
             {
-                FinForm.instance.Show();
+                StatusForm.instance.Show();
                 this.Hide();
             }
             else
             {
-                FinForm finalized = new FinForm();
+                StatusForm finalized = new StatusForm();
                 finalized.Show();
                 this.Hide();
             }

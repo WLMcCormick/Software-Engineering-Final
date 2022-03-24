@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace PharmApp
 {
-    public partial class FinForm : Form
+    public partial class StatusForm : Form
     {
-        public static FinForm instance;
-        public FinForm()
+        public static StatusForm instance;
+        public StatusForm()
         {
             InitializeComponent();
             instance = this;
