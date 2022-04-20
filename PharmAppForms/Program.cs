@@ -20,7 +20,7 @@ namespace PharmApp
 
             OurConnection.DbConnect();
 
-            Console.WriteLine(OurConnection.DbtestQuery2("1"));
+            Console.WriteLine(OurConnection.getReview());
 
 
             Application.EnableVisualStyles();

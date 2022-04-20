@@ -38,7 +38,7 @@ namespace PharmApp
             return "done";
 
         }
-        public  string SelectAll()
+        public  string getHPLCValues()
         {
             string sql = "SELECT * FROM pharmacydb.hplc_values;";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -52,7 +52,7 @@ namespace PharmApp
             return "done";
         }
 
-        public string DbtestQuery2(string Reportid)
+        public string getReport(string Reportid)
         {
             string sql = "SELECT `reports`.`ReportID`,`reports`.`status`," +
                 "`reports`.`time`,`reports`.`RL`,`reports`.`QL`," +
@@ -72,6 +72,85 @@ namespace PharmApp
             rdr.Close();
             return "done";
         }
+        public string getReview()
+        {
+            //Returns reportIDs with a status of "Needs Review"
+            string sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Needs Review'";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                Console.WriteLine(rdr["ReportID"].ToString());
+            }
+            rdr.Close();
+            return "done";
+        }
+        public string getFinal()
+        {
+            //Returns reportIDs with a status of "Finalized"
+            string sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Finalized'";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                Console.WriteLine(rdr["ReportID"].ToString());
+            }
+            rdr.Close();
+            return "done";
+        }
+        public string getCorrections()
+        {
+            //Returns reportIDs with a status of "Corrections Needed"
+            string sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Corrections Needed'";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                Console.WriteLine(rdr["ReportID"].ToString());
+            }
+            rdr.Close();
+            return "done";
+        }
+
+        public string newReport(string rL, string qL)
+        {
+            //Method to add new report entry into report table
+            return "done";
+        }
+
+        public string getHighlightedIDS(string rL, string qL)
+        {
+            //Returns IDS for hplc values between RL and QL
+            string sql = "SELECT id FROM pharmacydb.hplc_values WHERE HPLC_values > " + qL + ";";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                Console.WriteLine(rdr["id"].ToString());
+            }
+            rdr.Close();
+            return "done";
+        }
+
+        public string getReportIDbyStatus(string status)
+        {
+            //Returns reportIDS given a status "Finalized" , "Needs Review", "Corrections Needed"
+            return "done";
+        }
+
+        public string updateReportStatus(string rID, string status)
+        {
+            //Updates a report status attribute from rID to the passed status
+            return "done";
+        }
+
+        public string updateErrorStatus(string rID, string error)
+        {
+            //Updates a error attribute of the given report based off rID with the passed error
+            return "done";
+        }
+
 
 
 
