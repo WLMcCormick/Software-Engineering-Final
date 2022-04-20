@@ -12,7 +12,8 @@ namespace PharmApp
 
       // string connStr = "server=localhost;user=root;database=pharmacydb;port=3306;password=password";// to work on your machine make sure your running a
                                                                                                       // mysql DB and have the UID and Pass set to your credentials 
-        static private MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=password");
+        static private MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=password;" +
+            "ConvertZeroDateTime=True;AllowZeroDateTime=True;");
 
         public void DbConnect()
         {
@@ -51,15 +52,21 @@ namespace PharmApp
             return "done";
         }
 
-        public object DbtestQuery2(string Reportid)
+        public string DbtestQuery2(string Reportid)
         {
-            string sql = "SELECT * FROM pharmacydb.hplc_values;";
+            string sql = "SELECT `reports`.`ReportID`,`reports`.`status`," +
+                "`reports`.`time`,`reports`.`RL`,`reports`.`QL`," +
+                "`reports`.`RSum`,`reports`.`error`" +
+                "FROM `pharmacydb`.`reports`WHERE `ReportID` = " + Reportid+ ";";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
-
+            DateTime myDateTime = DateTime.Now;
+            string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
             while (rdr.Read())
             {
-                Console.WriteLine(rdr["id"].ToString() + " " + rdr["HPLC_values"].ToString());
+                Console.WriteLine(rdr["ReportID"].ToString() + " " + rdr["status"].ToString()+
+                    " " + myDateTime.ToString(rdr["time"].ToString()) + " " + rdr["RL"].ToString() + " " + 
+                    rdr["QL"].ToString() + " " + rdr["RSum"].ToString() + " " + rdr["error"].ToString());
             }
             rdr.Close();
             return "done";
