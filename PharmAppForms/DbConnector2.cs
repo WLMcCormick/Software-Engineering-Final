@@ -118,9 +118,9 @@ namespace PharmApp
             return "done";
         }
 
-        public string getHighlightedIDS(string rL, string qL)
+        public string getHighlightedIDSAboveQL(string qL)
         {
-            //Returns IDS for hplc values between RL and QL
+            //Returns IDS for hplc above qL
             string sql = "SELECT id FROM pharmacydb.hplc_values WHERE HPLC_values > " + qL + ";";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
@@ -132,6 +132,21 @@ namespace PharmApp
             rdr.Close();
             return "done";
         }
+        public string getHighlightedIDSInbetween(string qL, string rL)
+        {
+            //Returns IDS for hplc between qL and rL
+            string sql = "SELECT id FROM pharmacydb.hplc_values WHERE HPLC_values < " + qL + " AND HPLC_values > " + rL + ";";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                Console.WriteLine(rdr["id"].ToString());
+            }
+            rdr.Close();
+            return "done";
+        }
+
 
         public string getReportIDbyStatus(string status)
         {
