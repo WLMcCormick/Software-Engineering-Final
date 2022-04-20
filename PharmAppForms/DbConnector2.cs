@@ -37,16 +37,29 @@ namespace PharmApp
             return "done";
 
         }
-        public  object DbtestQuery1()
+        public  string SelectAll()
         {
-            // Lines 23 - 42 are an example query
-            string sql = "SELECT `id` FROM `pharmacydb`.`hplc_values` where HPLC_values = 1;";
+            string sql = "SELECT * FROM pharmacydb.hplc_values;";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
 
             while (rdr.Read())
             {
-               return rdr[0];
+               Console.WriteLine(rdr["id"].ToString() + " " + rdr["HPLC_values"].ToString());
+            }
+            rdr.Close();
+            return "done";
+        }
+
+        public object DbtestQuery2(string Reportid)
+        {
+            string sql = "SELECT * FROM pharmacydb.hplc_values;";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                Console.WriteLine(rdr["id"].ToString() + " " + rdr["HPLC_values"].ToString());
             }
             rdr.Close();
             return "done";
