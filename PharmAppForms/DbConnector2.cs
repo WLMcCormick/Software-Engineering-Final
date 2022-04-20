@@ -147,13 +147,6 @@ namespace PharmApp
             return "done";
         }
 
-
-        public string getReportIDbyStatus(string status)
-        {
-            //Returns reportIDS given a status "Finalized" , "Needs Review", "Corrections Needed"
-            return "done";
-        }
-
         public string updateReportStatus(string rID, string status)
         {
             //Updates a report status attribute from rID to the passed status
