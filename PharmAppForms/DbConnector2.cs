@@ -57,15 +57,16 @@ namespace PharmApp
             string sql = "SELECT `reports`.`ReportID`,`reports`.`status`," +
                 "`reports`.`time`,`reports`.`RL`,`reports`.`QL`," +
                 "`reports`.`RSum`,`reports`.`error`" +
-                "FROM `pharmacydb`.`reports`WHERE `ReportID` = " + Reportid+ ";";
+                "FROM `pharmacydb`.`reports`WHERE `ReportID` = " + Reportid + ";";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
-            DateTime myDateTime = DateTime.Now;
-            string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            
             while (rdr.Read())
             {
+                DateTime myDateTime = DateTime.Parse(rdr["time"].ToString());
+                string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss");
                 Console.WriteLine(rdr["ReportID"].ToString() + " " + rdr["status"].ToString()+
-                    " " + myDateTime.ToString(rdr["time"].ToString()) + " " + rdr["RL"].ToString() + " " + 
+                    " " + sqlFormattedDate + " " + rdr["RL"].ToString() + " " + 
                     rdr["QL"].ToString() + " " + rdr["RSum"].ToString() + " " + rdr["error"].ToString());
             }
             rdr.Close();
