@@ -69,25 +69,28 @@ namespace PharmApp
         private void Main_Click(object sender, EventArgs e)
         {
             EntryForm.instance.Show();
-            this.Hide();
+            this.Close();
         }
         private void Pass_Click(object sender, EventArgs e)
         {
-            string selected = comboBox1.SelectedItem.ToString();
-            OurConnection.updateReportStatus(selected, "Finalized");
-            EntryForm.instance.Show();
-            this.Close();
-
+            if (comboBox1.SelectedIndex > -1)
+            {
+                string selected = comboBox1.SelectedItem.ToString();
+                OurConnection.updateReportStatus(selected, "Finalized");
+                EntryForm.instance.Show();
+                this.Close();
+            }
 
         }
         private void Fail_Click(object sender, EventArgs e)
         {
-            string selected = comboBox1.SelectedItem.ToString();
-            CorrectionForm correct = new CorrectionForm(selected);
-            correct.Show();
-            this.Hide();
-
-
+            if(comboBox1.SelectedIndex > -1)
+            {
+                string selected = comboBox1.SelectedItem.ToString();
+                CorrectionForm correct = new CorrectionForm(selected);
+                correct.Show();
+                this.Hide();
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

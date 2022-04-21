@@ -29,17 +29,11 @@ namespace PharmApp
         {
             if (sciSel == true)
             {
-                if(ValidationForm.instance != null)
-                {
-                    ValidationForm.instance.Show();
-                    this.Hide();
-                }
-                else
-                {
+
                     ValidationForm form = new ValidationForm();
                     form.Show();
                     this.Hide();
-                }
+
             }
             else
             {
