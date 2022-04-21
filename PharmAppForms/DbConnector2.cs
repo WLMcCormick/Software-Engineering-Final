@@ -72,21 +72,27 @@ namespace PharmApp
             rdr.Close();
             return "done";
         }
-        public string getReview()
+        public string[] getReview()
         {
+
             //Returns reportIDs with a status of "Needs Review"
+            string[] reportIDS = new string[determineDropArray()];
+            var reportForm = Application.OpenForms["ReportForm"];
             string sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Needs Review'";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
+            int count = 0;
             while (rdr.Read())
             {
-                Console.WriteLine(rdr["ReportID"].ToString());
+                reportIDS[count] = rdr["ReportID"].ToString();
+                count++;
             }
             rdr.Close();
-            return "done";
+            return reportIDS;
         }
         public string getFinal()
         {
+
             //Returns reportIDs with a status of "Finalized"
             string sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Finalized'";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -157,6 +163,23 @@ namespace PharmApp
         {
             //Updates a error attribute of the given report based off rID with the passed error
             return "done";
+        }
+
+
+        public int determineDropArray()
+        {
+            //Returns Count for drop down length for reports
+            string sql = "SELECT COUNT(`reports`.`ReportID`) FROM `pharmacydb`.`reports` WHERE `status` = 'Corrections Needed'";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                string total = rdr[0].ToString();
+                int totalConvert;
+                int.TryParse(total, out totalConvert);
+                return totalConvert;
+            }
+            return 0;
         }
 
 
