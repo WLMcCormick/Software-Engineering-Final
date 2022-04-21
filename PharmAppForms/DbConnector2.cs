@@ -15,30 +15,40 @@ namespace PharmApp
 
       // string connStr = "server=localhost;user=root;database=pharmacydb;port=3306;password=password";// to work on your machine make sure your running a
       // mysql DB and have the UID and Pass set to your credentials 
-        public string getHPLCValues()
+        public double[] getHPLCValues()
         {
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
-                    "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" + "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
                 try
                 {
+
+                    double[] reportIDS = new double[determineDataArrayHPLC() * 2];
+                    var reportForm = Application.OpenForms["ReportForm"];
                     string sql = "SELECT * FROM pharmacydb.hplc_values;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
-
+                    int count = 0;
                     while (rdr.Read())
                     {
-                        Console.WriteLine(rdr["id"].ToString() + " " + rdr["HPLC_values"].ToString());
+                        if (rdr[0] != null)
+                        {
+                            reportIDS[count] = Convert.ToDouble(rdr[0]);
+                            count++;
+                        }
+                        if(rdr[1] != null)
+                        {
+                            reportIDS[count] = Convert.ToDouble(rdr[1]);
+                            count++;
+                        }
                     }
                     rdr.Close();
-                    return "done";
-
+                    return reportIDS;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
-                    return "done";
+                    throw new Exception(ex.ToString());
+
                 }
 
             }
@@ -295,7 +305,7 @@ namespace PharmApp
 
         public int determineDropArray()
         {
-            //Returns Count for drop down length for reports
+            //Returns Count for drop down length for reports QA side
             using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
@@ -332,7 +342,7 @@ namespace PharmApp
         }
         public int determineDropArrayQC()
         {
-            //Returns Count for drop down length for reports
+            //Returns Count for drop down length for reports QC side
             using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
@@ -367,7 +377,43 @@ namespace PharmApp
             }
 
         }
+        public int determineDataArrayHPLC()
+        {
+            //Returns Count for hplc elements in db
+            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+                "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            {
+                conn.Open();
+                try
+                {
+                    string sql = "SELECT COUNT(`hplc_values`.`id`) FROM `pharmacydb`.`hplc_values`;";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        string total = rdr[0].ToString();
+                        if (total.Equals("0"))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            int totalConvert;
+                            int.TryParse(total, out totalConvert);
+                            return totalConvert;
+                        }
 
+                    }
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+
+                }
+            }
+
+        }
         public void updateRLQL(string RL, string QL, string RID)
         {
             using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
