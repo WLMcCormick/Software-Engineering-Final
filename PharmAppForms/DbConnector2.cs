@@ -146,7 +146,7 @@ namespace PharmApp
                 }
             }
         }
-        public string getCorrections()
+        public string[] getCorrections()
         {
             //Returns reportIDs with a status of "Corrections Needed"
             using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" + "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
@@ -154,21 +154,30 @@ namespace PharmApp
                 conn.Open();
                 try
                 {
-                    string sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Corrections Needed'";
+
+                    string[] reportIDS = new string[determineDropArrayQC()];
+                    var reportForm = Application.OpenForms["ReportForm"];
+                    string sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Needs Review'";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
+                    int count = 0;
                     while (rdr.Read())
                     {
-                        Console.WriteLine(rdr["ReportID"].ToString());
+                        if (rdr[0] != null)
+                        {
+                            reportIDS[count] = rdr["ReportID"].ToString();
+                            count++;
+                        }
                     }
                     rdr.Close();
-                    return "done";
+                    return reportIDS;
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.ToString());
 
                 }
+
             }
         }
 
@@ -310,6 +319,43 @@ namespace PharmApp
                             return totalConvert;
                         }
                         
+                    }
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+
+                }
+            }
+
+        }
+        public int determineDropArrayQC()
+        {
+            //Returns Count for drop down length for reports
+            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+                "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            {
+                conn.Open();
+                try
+                {
+                    string sql = "SELECT COUNT(`reports`.`ReportID`) FROM `pharmacydb`.`reports` WHERE `status` = 'Needs Review';";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        string total = rdr[0].ToString();
+                        if (total.Equals("0"))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            int totalConvert;
+                            int.TryParse(total, out totalConvert);
+                            return totalConvert;
+                        }
+
                     }
                     return 1;
                 }

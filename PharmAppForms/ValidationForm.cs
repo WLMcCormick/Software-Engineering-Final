@@ -12,15 +12,34 @@ namespace PharmApp
 {
     public partial class ValidationForm : Form
     {
+        DbConnector2 OurConnection = new DbConnector2();
         public static ValidationForm instance;
         public ValidationForm()
         {
             InitializeComponent();
             instance = this;
+            string[] dropDownElements = new string[OurConnection.determineDropArrayQC()];
+            dropDownElements = OurConnection.getCorrections();
+
+            for (int i = 0; i < dropDownElements.Length; i++)
+            {
+                if (dropDownElements[i] != null)
+                {
+                    this.comboBox1.Items.Add(dropDownElements[i]);
+                }
+
+            }
         }
 
         private void Pull_Click(object sender, EventArgs e)
         {
+            string selected = comboBox1.SelectedItem.ToString();
+
+            DataTable dt = new DataTable();
+
+            dt = OurConnection.getReport(selected);
+
+            dataGridView1.DataSource = dt;
 
         }
         private void Main_Click(object sender, EventArgs e)
@@ -30,6 +49,7 @@ namespace PharmApp
         }
         private void Pass_Click(object sender, EventArgs e)
         {
+
 
         }
         private void Fail_Click(object sender, EventArgs e)
