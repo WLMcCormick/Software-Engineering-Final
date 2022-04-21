@@ -37,24 +37,28 @@ namespace PharmApp
             {
                 OurConnection.updateErrorStatus(rid, "Both");
                 EntryForm.instance.Show();
+                ValidationForm.instance.Close();
                 this.Close();
             }
             else if (checkBox1.CheckState == CheckState.Checked && checkBox2.CheckState != CheckState.Checked)
             {
                 OurConnection.updateErrorStatus(rid, "QL");
                 EntryForm.instance.Show();
+                ValidationForm.instance.Close();
                 this.Close();
             }
             else if (checkBox1.CheckState != CheckState.Checked && checkBox2.CheckState == CheckState.Checked)
             {
                 OurConnection.updateErrorStatus(rid, "RL");
                 EntryForm.instance.Show();
+                ValidationForm.instance.Close();
                 this.Close();
 
             }
             else
             {
-                throw new Exception("No Error Present");
+                ValidationForm.instance.Show();
+                this.Close();
             }
         }
     }
