@@ -139,7 +139,6 @@ namespace PharmApp
                 conn.Open();
                 try
                 {
-
                     string[] reportIDS = new string[determineFinalArray()];
                     var reportForm = Application.OpenForms["ReportForm"];
                     string sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Finalized'";
