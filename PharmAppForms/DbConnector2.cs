@@ -140,7 +140,7 @@ namespace PharmApp
                 try
                 {
 
-                    string[] reportIDS = new string[determineDropArrayQC()];
+                    string[] reportIDS = new string[determineFinalArray()];
                     var reportForm = Application.OpenForms["ReportForm"];
                     string sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Finalized'";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -359,6 +359,43 @@ namespace PharmApp
                             return totalConvert;
                         }
                         
+                    }
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+
+                }
+            }
+
+        }
+        public int determineFinalArray()
+        {
+            //Returns Count for drop down length for reports QA side
+            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+                "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            {
+                conn.Open();
+                try
+                {
+                    string sql = "SELECT COUNT(`reports`.`ReportID`) FROM `pharmacydb`.`reports` WHERE `status` = 'Finalized';";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        string total = rdr[0].ToString();
+                        if (total.Equals("0"))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            int totalConvert;
+                            int.TryParse(total, out totalConvert);
+                            return totalConvert;
+                        }
+
                     }
                     return 1;
                 }
