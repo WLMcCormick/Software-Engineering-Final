@@ -14,19 +14,24 @@ namespace PharmApp
 {
     public partial class ReportForm : Form
     {
+        DbConnector2 OurConnection = new DbConnector2();
         public static ReportForm instance;
         public ReportForm()
         {
             InitializeComponent();
-            instance = this;
-            DbConnector2 OurConnection = new DbConnector2();
-
+            instance = this;       
                     string[] dropDownElements = new string[OurConnection.determineDropArray()];
                     dropDownElements = OurConnection.getReview();
 
-                    for(int i = 0; i < dropDownElements.Length; i++)
+                    for(int i = 0; i <= dropDownElements.Length; i++)
                     {
-                        this.comboBox1.Items.Add(dropDownElements[i]);
+                        if (i == dropDownElements.Length)
+                        {
+                            this.comboBox1.Items.Add("New");
+                        }
+                        else {
+                            this.comboBox1.Items.Add(dropDownElements[i]);
+                        }  
                     }
         }
         private void Main_Click(object sender, EventArgs e)
@@ -36,9 +41,24 @@ namespace PharmApp
         }
         private void Generate_Click(object sender, EventArgs e)
         {
-            ViewForm viewer = new ViewForm();
-            viewer.Show();
-            this.Hide();
+            string QL = textBox1.Text;
+            string RL = textBox2.Text;
+            string selected = this.comboBox1.SelectedItem.ToString();
+            if ( selected == "New")
+            {
+                string newRID = OurConnection.newReport(RL, QL);
+                ViewForm viewer = new ViewForm(newRID);
+                viewer.Show();
+                this.Hide();
+            }
+            else
+            {
+                OurConnection.updateRLQL(RL, QL, selected);
+                ViewForm viewer = new ViewForm(selected);
+                viewer.Show();
+                this.Hide();
+
+            }
         }
 
         private void ReportForm_Load(object sender, EventArgs e)

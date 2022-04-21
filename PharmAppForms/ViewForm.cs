@@ -12,11 +12,16 @@ namespace PharmApp
 {
     public partial class ViewForm : Form
     {
+        DbConnector2 OurConnection = new DbConnector2();
         public static ViewForm instance;
-        public ViewForm()
+        public ViewForm(string RID)
         {
             InitializeComponent();
             instance = this;
+            DataTable dt = new DataTable();
+            dt = OurConnection.getReport(RID);
+            dataGridView1.DataSource = dt;
+
         }
 
         private void label1_Click(object sender, EventArgs e)
