@@ -12,9 +12,12 @@ namespace PharmApp
 {
     public partial class CorrectionForm : Form
     {
+        DbConnector2 OurConnection = new DbConnector2();
         public static CorrectionForm instance;
-        public CorrectionForm()
+        public string rid { get; set; }
+        public CorrectionForm(string RID)
         {
+            rid = RID;
             InitializeComponent();
             instance = this;
         }
@@ -27,6 +30,32 @@ namespace PharmApp
         private void CorrectionForm_Load(object sender, EventArgs e)
         {
 
+        }
+        private void Submit(object sender, EventArgs e)
+        {
+            if(checkBox1.CheckState == CheckState.Checked && checkBox2.CheckState == CheckState.Checked)
+            {
+                OurConnection.updateErrorStatus(rid, "Both");
+                EntryForm.instance.Show();
+                this.Close();
+            }
+            else if (checkBox1.CheckState == CheckState.Checked && checkBox2.CheckState != CheckState.Checked)
+            {
+                OurConnection.updateErrorStatus(rid, "QL");
+                EntryForm.instance.Show();
+                this.Close();
+            }
+            else if (checkBox1.CheckState != CheckState.Checked && checkBox2.CheckState == CheckState.Checked)
+            {
+                OurConnection.updateErrorStatus(rid, "RL");
+                EntryForm.instance.Show();
+                this.Close();
+
+            }
+            else
+            {
+                throw new Exception("No Error Present");
+            }
         }
     }
 }

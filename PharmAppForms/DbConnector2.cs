@@ -296,10 +296,31 @@ namespace PharmApp
             return "done";
         }
 
-        public string updateErrorStatus(string rID, string error)
+        public void updateErrorStatus(string rID, string error)
         {
             //Updates a error attribute of the given report based off rID with the passed error
-            return "done";
+            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+                "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            {
+                conn.Open();
+                try
+                {
+                    string sql = "UPDATE reports SET `error` = @error, `status` = @status WHERE `ReportID` = @RID";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("@RID", rID);
+                    cmd.Parameters.AddWithValue("@error", error);
+                    cmd.Parameters.AddWithValue("@status", "Corrections Needed");
+                    cmd.ExecuteNonQuery();
+
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+
+                }
+            }
         }
 
 

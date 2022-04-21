@@ -77,7 +77,8 @@ namespace PharmApp
 
         }
         private void Fail_Click(object sender, EventArgs e)
-        { 
+        {
+            string selected = comboBox1.SelectedItem.ToString();
             if (CorrectionForm.instance != null)
             {
                 CorrectionForm.instance.Show();
@@ -85,7 +86,7 @@ namespace PharmApp
             }
             else
             {
-                CorrectionForm correct = new CorrectionForm();
+                CorrectionForm correct = new CorrectionForm(selected);
                 correct.Show();
                 this.Hide();
             }
