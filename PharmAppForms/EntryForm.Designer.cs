@@ -63,7 +63,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(144, 23);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Finalized Reports";
+            this.button2.Text = "Check Report Status";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Final_Click);
             // 

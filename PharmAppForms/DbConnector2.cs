@@ -97,8 +97,7 @@ namespace PharmApp
          
                     string[] reportIDS = new string[determineDropArray()];
                     var reportForm = Application.OpenForms["ReportForm"];
-                    string sql = "SELECT ISNULL((SELECT 1 FROM 'reports' WHERE `status` = 'Needs Review'),0)";
-                    sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Needs Review'";
+                    string sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Corrections Needed'";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     int count = 0;
@@ -300,11 +299,19 @@ namespace PharmApp
                     while (rdr.Read())
                     {
                         string total = rdr[0].ToString();
-                        int totalConvert;
-                        int.TryParse(total, out totalConvert);
-                        return totalConvert;
+                        if (total.Equals("0"))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            int totalConvert;
+                            int.TryParse(total, out totalConvert);
+                            return totalConvert;
+                        }
+                        
                     }
-                    return 0;
+                    return 1;
                 }
                 catch (Exception ex)
                 {
@@ -323,9 +330,16 @@ namespace PharmApp
                 conn.Open();
                 try
                 {
-                    string sql = "UPDATE `reports` SET `RL` = " + RL + ", `QL` = " + QL + " WHERE `ReportID` = " + RID + ";";
+                    string sql = "UPDATE reports SET `RL` = @RL, `QL` = @QL, `status` = @status WHERE `ReportID` = @RID";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("@RL", RL);
+                    cmd.Parameters.AddWithValue("@QL", QL);
+                    cmd.Parameters.AddWithValue("@status", "Needs Review");
+                    cmd.Parameters.AddWithValue("@RID", RID);
                     cmd.ExecuteNonQuery();
+                    
+
                 }
                 catch (Exception ex)
                 {
@@ -334,8 +348,6 @@ namespace PharmApp
                 }
             }
         }
-
-
 
 
 

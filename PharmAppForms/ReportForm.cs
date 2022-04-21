@@ -30,7 +30,9 @@ namespace PharmApp
                             this.comboBox1.Items.Add("New");
                         }
                         else {
+                            if(dropDownElements[i] != null) {
                             this.comboBox1.Items.Add(dropDownElements[i]);
+                            }
                         }  
                     }
         }
@@ -49,14 +51,14 @@ namespace PharmApp
                 string newRID = OurConnection.newReport(RL, QL);
                 ViewForm viewer = new ViewForm(newRID);
                 viewer.Show();
-                this.Hide();
+                this.Close();
             }
             else
             {
                 OurConnection.updateRLQL(RL, QL, selected);
                 ViewForm viewer = new ViewForm(selected);
                 viewer.Show();
-                this.Hide();
+                this.Close();
 
             }
         }
