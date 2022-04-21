@@ -130,7 +130,7 @@ namespace PharmApp
 
             }
         }
-        public string getFinal()
+        public string[] getFinal()
         {
 
             //Returns reportIDs with a status of "Finalized"
@@ -139,21 +139,30 @@ namespace PharmApp
                 conn.Open();
                 try
                 {
+
+                    string[] reportIDS = new string[determineDropArrayQC()];
+                    var reportForm = Application.OpenForms["ReportForm"];
                     string sql = "SELECT `reports`.`ReportID` FROM `pharmacydb`.`reports` WHERE `status` = 'Finalized'";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
+                    int count = 0;
                     while (rdr.Read())
                     {
-                        Console.WriteLine(rdr["ReportID"].ToString());
+                        if (rdr[0] != null)
+                        {
+                            reportIDS[count] = rdr["ReportID"].ToString();
+                            count++;
+                        }
                     }
                     rdr.Close();
-                    return "done";
+                    return reportIDS;
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.ToString());
 
                 }
+
             }
         }
         public string[] getCorrections()
