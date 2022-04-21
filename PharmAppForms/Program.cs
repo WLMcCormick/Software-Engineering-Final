@@ -18,7 +18,7 @@ namespace PharmApp
         {
             DbConnector2 OurConnection = new DbConnector2();
 
-            OurConnection.DbConnect();
+            
 
             Console.WriteLine(OurConnection.determineDropArray());
 
@@ -27,7 +27,7 @@ namespace PharmApp
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new EntryForm());
             
-            OurConnection.DbDisconnect();
+            
 
            // conn.Close();
            // Console.WriteLine("Done.");

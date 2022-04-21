@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static PharmApp.DbConnector2;
+using MySqlConnector;
 
 namespace PharmApp
 {
@@ -18,14 +19,15 @@ namespace PharmApp
         {
             InitializeComponent();
             instance = this;
-            DbConnector2 Connection = new DbConnector2();
-            string[] dropDownElements = new string[Connection.determineDropArray()];
-            dropDownElements = Connection.getReview();
+            DbConnector2 OurConnection = new DbConnector2();
 
-            for(int i = 0; i < dropDownElements.Length; i++)
-            {
-                this.comboBox1.Items.Add(dropDownElements[i]);
-            }
+                    string[] dropDownElements = new string[OurConnection.determineDropArray()];
+                    dropDownElements = OurConnection.getReview();
+
+                    for(int i = 0; i < dropDownElements.Length; i++)
+                    {
+                        this.comboBox1.Items.Add(dropDownElements[i]);
+                    }
         }
         private void Main_Click(object sender, EventArgs e)
         {
