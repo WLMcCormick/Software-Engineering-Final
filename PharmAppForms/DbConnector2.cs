@@ -297,11 +297,30 @@ namespace PharmApp
             }
         }
 
-        public string updateReportStatus(string rID, string status)
+        public void updateReportStatus(string rID, string status)
         {
             //Updates a report status attribute from rID to the passed status
+            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+                "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            {
+                conn.Open();
+                try
+                {
+                    string sql = "UPDATE reports SET `status` = @status WHERE `ReportID` = @RID";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-            return "done";
+                    cmd.Parameters.AddWithValue("@RID", rID);
+                    cmd.Parameters.AddWithValue("@status", status);
+                    cmd.ExecuteNonQuery();
+
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+
+                }
+            }
         }
 
         public void updateErrorStatus(string rID, string error)
