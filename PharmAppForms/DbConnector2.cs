@@ -15,7 +15,7 @@ namespace PharmApp
 
       // string connStr = "server=localhost;user=root;database=pharmacydb;port=3306;password=password";// to work on your machine make sure your running a
       // mysql DB and have the UID and Pass set to your credentials 
-        public double[] getHPLCValues()
+        public DataTable getHPLCValues()
         {
             using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" + "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
@@ -28,22 +28,9 @@ namespace PharmApp
                     string sql = "SELECT * FROM pharmacydb.hplc_values;";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
-                    int count = 0;
-                    while (rdr.Read())
-                    {
-                        if (rdr[0] != null)
-                        {
-                            reportIDS[count] = Convert.ToDouble(rdr[0]);
-                            count++;
-                        }
-                        if(rdr[1] != null)
-                        {
-                            reportIDS[count] = Convert.ToDouble(rdr[1]);
-                            count++;
-                        }
-                    }
-                    rdr.Close();
-                    return reportIDS;
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(rdr);
+                    return dataTable;
                 }
                 catch (Exception ex)
                 {
