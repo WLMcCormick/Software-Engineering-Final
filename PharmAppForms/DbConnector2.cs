@@ -12,7 +12,7 @@ namespace PharmApp
 
       // string connStr = "server=localhost;user=root;database=pharmacydb;port=3306;password=password";// to work on your machine make sure your running a
                                                                                                       // mysql DB and have the UID and Pass set to your credentials 
-        static private MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+        static private MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=password;" +
             "ConvertZeroDateTime=True;AllowZeroDateTime=True;");
 
         public void DbConnect()
