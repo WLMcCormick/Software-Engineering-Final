@@ -30,6 +30,12 @@ namespace PharmApp
             this.dataGridView2.Columns.Add("3", "HPLC Values");
             this.dataGridView2.Columns.Add("4", "HPLC Values");
             this.dataGridView2.Rows.Add(1);
+
+            //get rl and ql
+            float[] rlql = OurConnection.GetRLQL(RID);
+            float rl = rlql[0];
+            float ql = rlql[1];
+
             for (int i = 1; i < dataHPLC.Length; i = i + 2)
             {
                 if (count % 5 == 0)
@@ -39,6 +45,15 @@ namespace PharmApp
                     this.dataGridView2.Rows.Add(w);
                 }
                 this.dataGridView2.Rows[w].Cells[count.ToString()].Value = dataHPLC[i];
+
+                if (dataHPLC[i] > rl && dataHPLC[i] < ql)
+                {
+                    this.dataGridView2.Rows[w].Cells[count.ToString()].Style.BackColor = Color.Aqua;
+                }
+                else if (dataHPLC[i] > ql)
+                {
+                    this.dataGridView2.Rows[w].Cells[count.ToString()].Style.BackColor = Color.Green;
+                }
                 count++;
             }
         }
@@ -64,6 +79,11 @@ namespace PharmApp
         }
 
         private void ViewForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

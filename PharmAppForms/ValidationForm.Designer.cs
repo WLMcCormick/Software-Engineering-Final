@@ -84,7 +84,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(360, 82);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.Size = new System.Drawing.Size(385, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(385, 244);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 

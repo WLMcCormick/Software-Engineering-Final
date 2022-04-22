@@ -86,6 +86,54 @@ namespace PharmApp
             }
 
         }
+        public float[] GetRLQL(string reportId)
+        {
+            float rl = 0;
+            float ql = 0;
+
+            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=password1;" +
+               "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            {
+                conn.Open();
+                try
+                {
+                    //get rl
+                    string rl_sql = "SELECT `reports`.`RL` FROM `pharmacydb`.`reports`WHERE `ReportID` = " + reportId + ";";
+                    MySqlCommand cmd = new MySqlCommand(rl_sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        if (rdr[0] != null)
+                        {
+                            rl = rdr.GetFloat(0);
+                        }
+                    }
+                    rdr.Close();
+
+                    //get ql
+                    rl_sql = "SELECT `reports`.`QL` FROM `pharmacydb`.`reports`WHERE `ReportID` = " + reportId + ";";
+                    cmd = new MySqlCommand(rl_sql, conn);
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        if (rdr[0] != null)
+                        {
+                            ql = rdr.GetFloat(0);
+                        }
+                    }
+                    rdr.Close();
+
+                    //add them to array and return
+                    float[] rlql = { rl, ql };
+                    return rlql;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+            }
+        }
+
         public DataTable getReports()
         {
             using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=password1;" +
@@ -112,9 +160,9 @@ namespace PharmApp
                     throw new Exception(ex.ToString());
 
                 }
-
             }
         }
+
         public DataTable getReport(string Reportid)
         {
             using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=password1;" +
@@ -148,7 +196,7 @@ namespace PharmApp
                     rdr.Close();
                     
 
-                    //get all the hplc values that are above the rl column 3
+                    //get all the hplc values that are above the rl, goes in column 3
                     float hplc_sum = 0;
                     string hplc_sql = "SELECT `hplc_values`.`HPLC_values` FROM `hplc_values` WHERE `hplc_values`.`HPLC_values` > " + rl + ";";
                     cmd = new MySqlCommand(hplc_sql, conn);
@@ -162,21 +210,10 @@ namespace PharmApp
                         }
                     }
                     rdr.Close();
+
+                    //display the sum in the box
                     dt.Rows[0][5] = hplc_sum.ToString();
                     return dt;
-                    //MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    //MySqlDataReader rdr = cmd.ExecuteReader();
-
-                    //while (rdr.Read())
-                    //{
-                    //    DateTime myDateTime = DateTime.Parse(rdr["time"].ToString());
-                    //    string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss");
-                    //    Console.WriteLine(rdr["ReportID"].ToString() + " " + rdr["status"].ToString() +
-                    //        " " + sqlFormattedDate + " " + rdr["RL"].ToString() + " " +
-                    //        rdr["QL"].ToString() + " " + rdr["RSum"].ToString() + " " + rdr["error"].ToString());
-                    //}
-                    //rdr.Close();
-                    //return "done";
                 }
                 catch (Exception ex)
                 {
