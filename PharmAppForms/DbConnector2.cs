@@ -132,6 +132,37 @@ namespace PharmApp
                     "FROM `pharmacydb`.`reports`WHERE `ReportID` = " + Reportid + ";";
                     adapt = new MySqlDataAdapter(sql, conn);
                     adapt.Fill(dt);
+
+                    //get the rl value;
+                    float rl = 0;
+                    string rl_sql = "SELECT `reports`.`RL` FROM `pharmacydb`.`reports`WHERE `ReportID` = " + Reportid + ";";
+                    MySqlCommand cmd = new MySqlCommand(rl_sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        if (rdr[0] != null)
+                        {
+                            rl = rdr.GetFloat(0);
+                        }
+                    }
+                    rdr.Close();
+                    
+
+                    //get all the hplc values that are above the rl column 3
+                    float hplc_sum = 0;
+                    string hplc_sql = "SELECT `hplc_values`.`HPLC_values` FROM `hplc_values` WHERE `hplc_values`.`HPLC_values` > " + rl + ";";
+                    cmd = new MySqlCommand(hplc_sql, conn);
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        if (rdr[0] != null)
+                        {
+                            Console.WriteLine("hplc: " + rdr.GetFloat(0));
+                            hplc_sum += rdr.GetFloat(0);
+                        }
+                    }
+                    rdr.Close();
+                    dt.Rows[0][5] = hplc_sum.ToString();
                     return dt;
                     //MySqlCommand cmd = new MySqlCommand(sql, conn);
                     //MySqlDataReader rdr = cmd.ExecuteReader();
