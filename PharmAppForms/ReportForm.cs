@@ -48,6 +48,10 @@ namespace PharmApp
         }
         private void Generate_Click(object sender, EventArgs e)
         {
+            if(comboBox1.SelectedItem == null) { return; }
+            if (textBox1.Text == "" || textBox1.Text == "Quantification Limit") { return; }
+            if (textBox2.Text == null || textBox1.Text == "Reporting Limit") { return; }
+
             string QL = textBox1.Text;
             string RL = textBox2.Text;
             string selected = this.comboBox1.SelectedItem.ToString();
