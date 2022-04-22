@@ -57,7 +57,7 @@ namespace PharmApp
         private void Back_Click(object sender, EventArgs e)
         {
             EntryForm.instance.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void FinForm_Load(object sender, EventArgs e)

@@ -29,17 +29,11 @@ namespace PharmApp
         {
             if (sciSel == true)
             {
-                if(ValidationForm.instance != null)
-                {
-                    ValidationForm.instance.Show();
-                    this.Hide();
-                }
-                else
-                {
+
                     ValidationForm form = new ValidationForm();
                     form.Show();
                     this.Hide();
-                }
+
             }
             else
             {
@@ -51,17 +45,11 @@ namespace PharmApp
         }
         private void Final_Click(object sender, EventArgs e)
         {
-            if (StatusForm.instance != null)
-            {
-                StatusForm.instance.Show();
-                this.Hide();
-            }
-            else
-            {
+
                 StatusForm finalized = new StatusForm();
                 finalized.Show();
                 this.Hide();
-            }
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
