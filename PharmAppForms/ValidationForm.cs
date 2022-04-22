@@ -34,37 +34,41 @@ namespace PharmApp
 
         private void Pull_Click(object sender, EventArgs e)
         {
-            string selected = comboBox1.SelectedItem.ToString();
 
-            DataTable dt = new DataTable();
 
-            dt = OurConnection.getReport(selected);
-
-            dataGridView1.DataSource = dt;
-
-            int w = 1;
-            int count = 1;
-            double[] dataHPLC = OurConnection.getHPLCValues();
-            this.dataGridView2.Columns.Add("1", "HPLC Values");
-            this.dataGridView2.Columns.Add("2", "HPLC Values");
-            this.dataGridView2.Columns.Add("3", "HPLC Values");
-            this.dataGridView2.Columns.Add("4", "HPLC Values");
-            this.dataGridView2.Rows.Add(1);
-            for (int i = 1; i < dataHPLC.Length; i = i + 2)
+            object selected = comboBox1.SelectedItem;
+            if (selected != null)
             {
-                if (count % 5 == 0)
+                string selectedRid = selected.ToString();
+
+                DataTable dt = new DataTable();
+                dt = OurConnection.getReport(selectedRid);
+
+                dataGridView1.DataSource = dt;
+
+                int w = 1;
+                int count = 1;
+                double[] dataHPLC = OurConnection.getHPLCValues();
+                this.dataGridView2.Columns.Add("1", "HPLC Values");
+                this.dataGridView2.Columns.Add("2", "HPLC Values");
+                this.dataGridView2.Columns.Add("3", "HPLC Values");
+                this.dataGridView2.Columns.Add("4", "HPLC Values");
+                this.dataGridView2.Rows.Add(1);
+                for (int i = 1; i < dataHPLC.Length; i = i + 2)
                 {
-                    count = 1;
-                    w++;
-                    this.dataGridView2.Rows.Add(w);
+                    if (count % 5 == 0)
+                    {
+                        count = 1;
+                        w++;
+                        this.dataGridView2.Rows.Add(w);
+                    }
+                    this.dataGridView2.Rows[w].Cells[count.ToString()].Value = dataHPLC[i];
+                    count++;
+
+
+
                 }
-                this.dataGridView2.Rows[w].Cells[count.ToString()].Value = dataHPLC[i];
-                count++;
-
-
-
             }
-
         }
         private void Main_Click(object sender, EventArgs e)
         {

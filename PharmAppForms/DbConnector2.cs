@@ -16,36 +16,36 @@ namespace PharmApp
         // string connStr = "server=localhost;user=root;database=pharmacydb;port=3306;password=password";// to work on your machine make sure your running a
         // mysql DB and have the UID and Pass set to your credentials 
 
-        public List<string> getReportIds()
-        {
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
-                "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
-            {
-                conn.Open();
-                try
-                {
+        //public List<string> getReportIds()
+        //{
+        //    using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+        //        "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+        //    {
+        //        conn.Open();
+        //        try
+        //        {
 
-                    DataTable dt = new DataTable();
+        //            DataTable dt = new DataTable();
 
-                    string sql = "SELECT reportID FROM pharmacydb.reports;";
+        //            string sql = "SELECT reportID FROM pharmacydb.reports;";
 
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    MySqlDataReader rdr = cmd.ExecuteReader();
-                    List<string> ids = new List<string>();
-                    while (rdr.Read())
-                    {
-                        ids.Add(rdr[0].ToString());
-                    }
-                    return ids;
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.ToString());
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //            MySqlDataReader rdr = cmd.ExecuteReader();
+        //            List<string> ids = new List<string>();
+        //            while (rdr.Read())
+        //            {
+        //                ids.Add(rdr[0].ToString());
+        //            }
+        //            return ids;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw new Exception(ex.ToString());
 
-                }
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
         public double[] getHPLCValues()
         {

@@ -16,23 +16,29 @@ namespace PharmApp
     {
         DbConnector2 OurConnection = new DbConnector2();
         public static ReportForm instance;
-        ComboBox comboBox1;
         public ReportForm()
         {
-            InitializeComponent();
-            instance = this;
-            List<string> reportIds = OurConnection.getReportIds();
-            comboBox1 = new ComboBox();
-            comboBox1.Dock = DockStyle.Fill;
-            foreach (string d in reportIds)
-            {
-                if (d != null)
+
+                InitializeComponent();
+                instance = this;
+                string[] dropDownElements = new string[OurConnection.determineDropArray()];
+                dropDownElements = OurConnection.getReview();
+
+                for (int i = 0; i <= dropDownElements.Length; i++)
                 {
-                    comboBox1.Items.Add(d);
+                    if (i == dropDownElements.Length)
+                    {
+                        this.comboBox1.Items.Add("New");
+                    }
+                    else
+                    {
+                        if (dropDownElements[i] != null)
+                        {
+                            this.comboBox1.Items.Add(dropDownElements[i]);
+                        }
+                    }
                 }
-            }
-            comboBox1.Items.Add("new");
-            this.panel1.Controls.Add(comboBox1);
+            
 
         }
         private void Main_Click(object sender, EventArgs e)
@@ -82,6 +88,11 @@ namespace PharmApp
             {
                 textBox1.Text = "";
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
