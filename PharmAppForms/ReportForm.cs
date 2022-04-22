@@ -66,5 +66,22 @@ namespace PharmApp
         {
 
         }
+
+        private void textBox2_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text.Contains("Limit"))
+            {
+                textBox2.Text = "";
+            }
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+
+            if (textBox1.Text.Contains("Limit"))
+            {
+                textBox1.Text = "";
+            }
+        }
     }
 }

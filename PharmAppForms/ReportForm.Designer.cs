@@ -66,6 +66,7 @@
             this.textBox1.Size = new System.Drawing.Size(288, 26);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "Quantification Limit";
+            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             // 
             // textBox2
             // 
@@ -75,6 +76,7 @@
             this.textBox2.Size = new System.Drawing.Size(288, 26);
             this.textBox2.TabIndex = 4;
             this.textBox2.Text = "Reporting Limit";
+            this.textBox2.Click += new System.EventHandler(this.textBox2_Click);
             // 
             // label1
             // 
