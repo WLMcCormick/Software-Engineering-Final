@@ -16,6 +16,35 @@ namespace PharmApp
         // string connStr = "server=localhost;user=root;database=pharmacydb;port=3306;password=password";// to work on your machine make sure your running a
         // mysql DB and have the UID and Pass set to your credentials 
 
+        public DataTable getReports()
+        {
+            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+                "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            {
+                conn.Open();
+                try
+                {
+
+                    string sql = "SELECT ReportID, status, time FROM pharmacydb.reports ORDER BY CASE " +
+                        "WHEN status = 'Needs Review' THEN 1 " +
+                        "WHEN status = 'Needs Corrections' THEN 2 " +
+                        "ELSE 3 END" +
+                        ";";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(rdr);
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+
+                }
+
+            }
+        }
         public List<string> getReportIds()
         {
             using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
