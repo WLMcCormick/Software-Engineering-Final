@@ -22,7 +22,7 @@ namespace PharmApp
             dt = OurConnection.getReport(RID);
             dataGridView1.DataSource = dt;
 
-            int w = 1;
+            int w = 0;
             int count = 1;
             double[] dataHPLC = OurConnection.getHPLCValues();
             this.dataGridView2.Columns.Add("1", "HPLC Values");
@@ -40,12 +40,7 @@ namespace PharmApp
                 }
                 this.dataGridView2.Rows[w].Cells[count.ToString()].Value = dataHPLC[i];
                 count++;
-                
-                
-
             }
-
-
         }
 
         private void label1_Click(object sender, EventArgs e)
