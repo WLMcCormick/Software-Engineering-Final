@@ -45,17 +45,11 @@ namespace PharmApp
         }
         private void Final_Click(object sender, EventArgs e)
         {
-            if (StatusForm.instance != null)
-            {
-                StatusForm.instance.Show();
-                this.Hide();
-            }
-            else
-            {
+
                 StatusForm finalized = new StatusForm();
                 finalized.Show();
                 this.Hide();
-            }
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
