@@ -18,9 +18,7 @@ namespace PharmApp
         {
             DbConnector2 OurConnection = new DbConnector2();
 
-            
-
-            Console.WriteLine(OurConnection.determineDropArray());
+           
 
 
             Application.EnableVisualStyles();
