@@ -12,44 +12,11 @@ namespace PharmApp
     public class DbConnector2
     {
         MySqlDataAdapter adapt;
-
-        // string connStr = "server=localhost;user=root;database=pharmacydb;port=3306;password=password";// to work on your machine make sure your running a
-        // mysql DB and have the UID and Pass set to your credentials 
-
-        //public List<string> getReportIds()
-        //{
-        //    using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=password1;" +
-        //        "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
-        //    {
-        //        conn.Open();
-        //        try
-        //        {
-
-        //            DataTable dt = new DataTable();
-
-        //            string sql = "SELECT reportID FROM pharmacydb.reports;";
-
-        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
-        //            MySqlDataReader rdr = cmd.ExecuteReader();
-        //            List<string> ids = new List<string>();
-        //            while (rdr.Read())
-        //            {
-        //                ids.Add(rdr[0].ToString());
-        //            }
-        //            return ids;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw new Exception(ex.ToString());
-
-        //        }
-
-        //    }
-        //}
+        const string pwd = "Daisy23**";
 
         public double[] getHPLCValues()
         {
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" + "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" + "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
                 try
@@ -91,7 +58,7 @@ namespace PharmApp
             float rl = 0;
             float ql = 0;
 
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -136,7 +103,7 @@ namespace PharmApp
 
         public DataTable getReports()
         {
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -165,7 +132,7 @@ namespace PharmApp
 
         public DataTable getReport(string Reportid)
         {
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -227,7 +194,7 @@ namespace PharmApp
         {
 
             //Returns reportIDs with a status of "Needs Review"
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" + "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" + "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
                 try
@@ -262,7 +229,7 @@ namespace PharmApp
         {
 
             //Returns reportIDs with a status of "Finalized"
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" + "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" + "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
                 try
@@ -295,7 +262,7 @@ namespace PharmApp
         public string[] getCorrections()
         {
             //Returns reportIDs with a status of "Corrections Needed"
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" + "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" + "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
                 try
@@ -330,7 +297,7 @@ namespace PharmApp
         public string newReport(string rL, string qL)
         {
             //Method to add new report entry into report table
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -373,7 +340,7 @@ namespace PharmApp
         public string getHighlightedIDSAboveQL(string qL)
         {
             //Returns IDS for hplc above qL
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -400,7 +367,7 @@ namespace PharmApp
         public string getHighlightedIDSInbetween(string qL, string rL)
         {
             //Returns IDS for hplc between qL and rL
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -428,7 +395,7 @@ namespace PharmApp
         public void updateReportStatus(string rID, string status)
         {
             //Updates a report status attribute from rID to the passed status
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -454,7 +421,7 @@ namespace PharmApp
         public void updateErrorStatus(string rID, string error)
         {
             //Updates a error attribute of the given report based off rID with the passed error
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -482,7 +449,7 @@ namespace PharmApp
         public int determineDropArray()
         {
             //Returns Count for drop down length for reports QA side
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -519,7 +486,7 @@ namespace PharmApp
         public int determineFinalArray()
         {
             //Returns Count for drop down length for reports QA side
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -556,7 +523,7 @@ namespace PharmApp
         public int determineDropArrayQC()
         {
             //Returns Count for drop down length for reports QC side
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -593,7 +560,7 @@ namespace PharmApp
         public int determineDataArrayHPLC()
         {
             //Returns Count for hplc elements in db
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -629,7 +596,7 @@ namespace PharmApp
         }
         public void updateRLQL(string RL, string QL, string RID)
         {
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=Daisy23**;" +
+            using (MySqlConnection conn = new MySqlConnection($"server=localhost;user=root;database=pharmacydb;port=3306;password={pwd};" +
                 "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
             {
                 conn.Open();
@@ -659,5 +626,41 @@ namespace PharmApp
 
     }
 }
+
+
+// string connStr = "server=localhost;user=root;database=pharmacydb;port=3306;password=password";// to work on your machine make sure your running a
+// mysql DB and have the UID and Pass set to your credentials 
+
+//public List<string> getReportIds()
+//{
+//    using (MySqlConnection conn = new MySqlConnection("server=localhost;user=root;database=pharmacydb;port=3306;password=password1;" +
+//        "ConvertZeroDateTime=True;AllowZeroDateTime=True;"))
+//    {
+//        conn.Open();
+//        try
+//        {
+
+//            DataTable dt = new DataTable();
+
+//            string sql = "SELECT reportID FROM pharmacydb.reports;";
+
+//            MySqlCommand cmd = new MySqlCommand(sql, conn);
+//            MySqlDataReader rdr = cmd.ExecuteReader();
+//            List<string> ids = new List<string>();
+//            while (rdr.Read())
+//            {
+//                ids.Add(rdr[0].ToString());
+//            }
+//            return ids;
+//        }
+//        catch (Exception ex)
+//        {
+//            throw new Exception(ex.ToString());
+
+//        }
+
+//    }
+//}
+
 
 
