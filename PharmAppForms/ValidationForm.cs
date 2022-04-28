@@ -40,7 +40,9 @@ namespace PharmApp
             if (selected != null)
             {
                 string selectedRid = selected.ToString();
-
+                // Remove old data
+                dataGridView2.Columns.Clear();
+                dataGridView2.Rows.Clear();
                 DataTable dt = new DataTable();
                 dt = OurConnection.getReport(selectedRid);
 
