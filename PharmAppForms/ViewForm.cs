@@ -25,10 +25,10 @@ namespace PharmApp
             int w = 0;
             int count = 1;
             double[] dataHPLC = OurConnection.getHPLCValues();
-            this.dataGridView2.Columns.Add("1", "HPLC Values");
-            this.dataGridView2.Columns.Add("2", "HPLC Values");
-            this.dataGridView2.Columns.Add("3", "HPLC Values");
-            this.dataGridView2.Columns.Add("4", "HPLC Values");
+            this.dataGridView2.Columns.Add("1", "HPLC Values COL 1");
+            this.dataGridView2.Columns.Add("2", "HPLC Values COL 2");
+            this.dataGridView2.Columns.Add("3", "HPLC Values COL 3");
+            this.dataGridView2.Columns.Add("4", "HPLC Values COL 4");
             this.dataGridView2.Rows.Add(1);
 
             //get rl and ql
