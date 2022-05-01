@@ -16,8 +16,10 @@ namespace PharmApp
         public static StatusForm instance;
         public StatusForm()
         {
+
             InitializeComponent();
             instance = this;
+            this.FormClosed += new FormClosedEventHandler(OurConnection.Form_FormClosed);
             dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
 
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Yellow;

@@ -21,6 +21,7 @@ namespace PharmApp
 
                 InitializeComponent();
                 instance = this;
+                this.FormClosed += new FormClosedEventHandler(OurConnection.Form_FormClosed);
                 string[] dropDownElements = new string[OurConnection.determineDropArray()];
                 dropDownElements = OurConnection.getReview();
 

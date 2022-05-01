@@ -24,7 +24,14 @@ namespace PharmApp
             connString.Database = "pharmacydb";
             return connString;
         }
-        
+
+       
+
+        public void Form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            EntryForm.instance.Close();
+        }
+
 
         public double[] getHPLCValues()
         {

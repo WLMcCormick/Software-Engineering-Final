@@ -49,7 +49,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(765, 63);
+            this.dataGridView1.Size = new System.Drawing.Size(765, 57);
             this.dataGridView1.TabIndex = 0;
             // 
             // dataGridView2
@@ -57,7 +57,7 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(310, 195);
+            this.dataGridView2.Location = new System.Drawing.Point(310, 185);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 62;
@@ -115,7 +115,7 @@
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Menu;
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(23, 195);
+            this.button2.Location = new System.Drawing.Point(23, 185);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(280, 31);
@@ -149,6 +149,7 @@
             this.metroSetControlBox1.Text = "metroSetControlBox1";
             this.metroSetControlBox1.ThemeAuthor = "Narwin";
             this.metroSetControlBox1.ThemeName = "MetroLite";
+            this.metroSetControlBox1.Click += new System.EventHandler(this.metroSetControlBox1_Click);
             // 
             // ViewForm
             // 

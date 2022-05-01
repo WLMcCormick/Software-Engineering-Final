@@ -18,6 +18,7 @@ namespace PharmApp
         {
             InitializeComponent();
             instance = this;
+            this.FormClosed += new FormClosedEventHandler(OurConnection.Form_FormClosed);
             DataTable dt = new DataTable();
             dt = OurConnection.getReport(RID);
             dataGridView1.DataSource = dt;
@@ -33,6 +34,9 @@ namespace PharmApp
             this.dataGridView2.Columns.Add("3", "HPLC Values COL 3");
             this.dataGridView2.Columns.Add("4", "HPLC Values COL 4");
             this.dataGridView2.Rows.Add(1);
+
+
+            
 
             //get rl and ql
             float[] rlql = OurConnection.GetRLQL(RID);
@@ -94,6 +98,11 @@ namespace PharmApp
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void metroSetControlBox1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -14,12 +14,14 @@ namespace PharmApp
     {
         DbConnector2 OurConnection = new DbConnector2();
         public static CorrectionForm instance;
+
         public string rid { get; set; }
         public CorrectionForm(string RID)
         {
             rid = RID;
             InitializeComponent();
             instance = this;
+            this.FormClosed += new FormClosedEventHandler(OurConnection.Form_FormClosed);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

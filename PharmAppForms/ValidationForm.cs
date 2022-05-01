@@ -20,7 +20,7 @@ namespace PharmApp
             instance = this;
             string[] dropDownElements = new string[OurConnection.determineDropArrayQC()];
             dropDownElements = OurConnection.getCorrections();
-
+            this.FormClosed += new FormClosedEventHandler(OurConnection.Form_FormClosed);
             for (int i = 0; i < dropDownElements.Length; i++)
             {
                 if (dropDownElements[i] != null)
