@@ -62,6 +62,7 @@ namespace PharmApp
                 ViewForm viewer = new ViewForm(newRID);
                 viewer.Show();
                 this.Close();
+                EntryForm.instance.Hide();
             }
             else
             {
@@ -69,6 +70,7 @@ namespace PharmApp
                 ViewForm viewer = new ViewForm(selected);
                 viewer.Show();
                 this.Close();
+                EntryForm.instance.Hide();
 
             }
         }

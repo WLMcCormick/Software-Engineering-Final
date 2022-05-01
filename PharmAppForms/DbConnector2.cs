@@ -29,7 +29,7 @@ namespace PharmApp
 
         public void Form_FormClosed(object sender, FormClosedEventArgs e)
         {
-            EntryForm.instance.Close();
+            EntryForm.instance.Show();
         }
 
 
