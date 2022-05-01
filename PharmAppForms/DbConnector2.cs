@@ -189,7 +189,7 @@ namespace PharmApp
                     {
                         if (rdr[0] != null)
                         {
-                            Console.WriteLine("hplc: " + rdr.GetFloat(0));
+                   
                             hplc_sum += rdr.GetFloat(0);
                         }
                     }
@@ -322,7 +322,7 @@ namespace PharmApp
                     //CALL TO FIND RSUM 
                     DateTime time = new DateTime();
                     time = DateTime.Now;
-                    Console.WriteLine(time);
+         
                     
                     string sql = "INSERT INTO pharmacydb.reports (status,time, RL, QL) VALUES (@status,@time, @RL, @QL)";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
