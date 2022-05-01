@@ -173,3 +173,4 @@ C:\Users\TJaruzel\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\MetroSet UI.dll
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\Debug\PharmApp.csprojAssemblyReference.cache
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\AUStudent\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\MetroSet UI.dll
