@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PharmApp
 {
-    public partial class StatusForm : Form
+    public partial class StatusForm : MetroSet_UI.Forms.MetroSetForm
     {
         DbConnector2 OurConnection = new DbConnector2();
         public static StatusForm instance;
@@ -18,6 +18,9 @@ namespace PharmApp
         {
             InitializeComponent();
             instance = this;
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Yellow;
 
             DataTable dt = OurConnection.getReports();
             dataGridView1.DataSource = dt;

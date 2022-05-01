@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PharmApp
 {
-    public partial class EntryForm : Form
+    public partial class EntryForm : MetroSet_UI.Forms.MetroSetForm
     {
         public static EntryForm instance;
         bool sciSel = false;

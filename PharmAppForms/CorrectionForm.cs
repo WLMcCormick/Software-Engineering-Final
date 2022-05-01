@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PharmApp
 {
-    public partial class CorrectionForm : Form
+    public partial class CorrectionForm : MetroSet_UI.Forms.MetroSetForm
     {
         DbConnector2 OurConnection = new DbConnector2();
         public static CorrectionForm instance;

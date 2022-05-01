@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PharmApp
 {
-    public partial class ValidationForm : Form
+    public partial class ValidationForm : MetroSet_UI.Forms.MetroSetForm
     {
         DbConnector2 OurConnection = new DbConnector2();
         public static ValidationForm instance;
@@ -47,7 +47,10 @@ namespace PharmApp
                 dt = OurConnection.getReport(selectedRid);
 
                 dataGridView1.DataSource = dt;
-
+                dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+                dataGridView2.DefaultCellStyle.ForeColor = Color.Black;
+                dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Yellow;
+                dataGridView2.DefaultCellStyle.SelectionForeColor = Color.Yellow;
                 int w = 0;
                 int count = 1;
                 double[] dataHPLC = OurConnection.getHPLCValues();
@@ -75,11 +78,11 @@ namespace PharmApp
 
                     if(dataHPLC[i] > rl && dataHPLC[i] < ql)
                     {
-                        this.dataGridView2.Rows[w].Cells[count.ToString()].Style.BackColor = Color.Aqua;
+                        this.dataGridView2.Rows[w].Cells[count.ToString()].Style.BackColor = Color.Teal;
                     }
                     else if(dataHPLC[i] > ql)
                     {
-                        this.dataGridView2.Rows[w].Cells[count.ToString()].Style.BackColor = Color.Green;
+                        this.dataGridView2.Rows[w].Cells[count.ToString()].Style.BackColor = Color.HotPink;
                     }
                     count++;
                 }

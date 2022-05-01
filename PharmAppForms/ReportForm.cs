@@ -12,7 +12,7 @@ using MySqlConnector;
 
 namespace PharmApp
 {
-    public partial class ReportForm : Form
+    public partial class ReportForm : MetroSet_UI.Forms.MetroSetForm
     {
         DbConnector2 OurConnection = new DbConnector2();
         public static ReportForm instance;
@@ -100,6 +100,11 @@ namespace PharmApp
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }

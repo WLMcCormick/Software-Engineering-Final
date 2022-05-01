@@ -72,12 +72,9 @@ C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Deb
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\System.Memory.dll
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\System.Buffers.dll
-C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\MySqlConnector.xml
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\Debug\PharmApp.csprojAssemblyReference.cache
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\Debug\PharmApp.exe.config
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\Debug\PharmApp.CorrectionForm.resources
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\Debug\PharmApp.EntryForm.resources
@@ -173,3 +170,6 @@ C:\Users\TJaruzel\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\
 C:\Users\TJaruzel\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\Debug\PharmApp.csproj.CopyComplete
 C:\Users\TJaruzel\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\Debug\PharmApp.exe
 C:\Users\TJaruzel\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\Debug\PharmApp.pdb
+C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\MetroSet UI.dll
+C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\Debug\PharmApp.csprojAssemblyReference.cache
+C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
