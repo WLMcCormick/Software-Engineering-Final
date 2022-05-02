@@ -49,9 +49,19 @@ namespace PharmApp
         }
         private void Generate_Click(object sender, EventArgs e)
         {
-            if(comboBox1.SelectedItem == null) { return; }
-            if (textBox1.Text == "" || textBox1.Text == "Quantification Limit") { return; }
-            if (textBox2.Text == null || textBox1.Text == "Reporting Limit") { return; }
+            //input verification
+            double verifiedRl;
+            bool successfulRl = double.TryParse(textBox1.Text, out verifiedRl);
+
+            double verifiedQl;
+            bool successfulQl = double.TryParse(textBox2.Text, out verifiedQl);
+
+            if (comboBox1.SelectedItem == null) { return; }
+            if (!successfulRl ) { return; }
+            if (!successfulQl) { return; }
+            if (verifiedRl >= 10) { return; }
+            if ( (verifiedQl < verifiedRl) && (verifiedQl > 10) ) { return; }
+            if (verifiedRl == verifiedQl) { return; }
 
             string QL = textBox1.Text;
             string RL = textBox2.Text;
