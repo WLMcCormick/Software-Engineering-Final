@@ -174,3 +174,30 @@ C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Deb
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\obj\Debug\PharmApp.csprojAssemblyReference.cache
 C:\Users\travi\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\AUStudent\Documents\GitHub\Software-Engineering-Final\PharmAppForms\bin\Debug\MetroSet UI.dll
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\PharmApp.exe.config
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\PharmApp.exe
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\PharmApp.pdb
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\MetroSet UI.dll
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\MySqlConnector.dll
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\System.Memory.dll
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\System.Buffers.dll
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\MySqlConnector.xml
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.csproj.AssemblyReference.cache
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.CorrectionForm.resources
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.EntryForm.resources
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.StatusForm.resources
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.Properties.Resources.resources
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.ReportForm.resources
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.ValidationForm.resources
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.ViewForm.resources
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.csproj.GenerateResource.cache
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.csproj.CoreCompileInputs.cache
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.csproj.CopyComplete
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.exe
+C:\Users\Logan\Documents\GitHub\Software-Engineering-Final\PharmAppForms\PharmAppForms\obj\Debug\PharmApp.pdb

@@ -65,6 +65,7 @@ namespace PharmApp
                 this.FormClosed -= formClosedEventHandler;
                 ValidationForm.instance.Show();
                 this.Close();
+                EntryForm.instance.Hide();
             }
         }
     }
