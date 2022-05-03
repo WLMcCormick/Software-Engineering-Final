@@ -19,27 +19,27 @@ namespace PharmApp
         public ReportForm()
         {
 
-                InitializeComponent();
-                instance = this;
-                this.FormClosed += new FormClosedEventHandler(OurConnection.Form_FormClosed);
-                string[] dropDownElements = new string[OurConnection.determineDropArray()];
-                dropDownElements = OurConnection.getReview();
+            InitializeComponent();
+            instance = this;
+            this.FormClosed += new FormClosedEventHandler(OurConnection.Form_FormClosed);
+            string[] dropDownElements = new string[OurConnection.determineDropArray()];
+            dropDownElements = OurConnection.getReview();
 
-                for (int i = 0; i <= dropDownElements.Length; i++)
+            for (int i = 0; i <= dropDownElements.Length; i++)
+            {
+                if (i == dropDownElements.Length)
                 {
-                    if (i == dropDownElements.Length)
+                    this.comboBox1.Items.Add("New");
+                }
+                else
+                {
+                    if (dropDownElements[i] != null)
                     {
-                        this.comboBox1.Items.Add("New");
-                    }
-                    else
-                    {
-                        if (dropDownElements[i] != null)
-                        {
-                            this.comboBox1.Items.Add(dropDownElements[i]);
-                        }
+                        this.comboBox1.Items.Add(dropDownElements[i]);
                     }
                 }
-            
+            }
+
 
         }
         private void Main_Click(object sender, EventArgs e)
@@ -49,9 +49,17 @@ namespace PharmApp
         }
         private void Generate_Click(object sender, EventArgs e)
         {
-            if(comboBox1.SelectedItem == null) { return; }
-            if (textBox1.Text == "" || textBox1.Text == "Quantification Limit") { return; }
-            if (textBox2.Text == null || textBox1.Text == "Reporting Limit") { return; }
+            if (comboBox1.SelectedItem == null) { return; }
+            if (textBox1.Text == "" || textBox1.Text == "Quantification Limit")
+            {
+                MessageBox.Show("Please enter a qualification limit.");
+                return;
+            }
+            if (textBox2.Text == null || textBox1.Text == "Reporting Limit")
+            {
+                MessageBox.Show("Please enter a Reporting limit.");
+                return;
+            }
 
             string QL = textBox1.Text;
             string RL = textBox2.Text;
@@ -71,7 +79,6 @@ namespace PharmApp
                 viewer.Show();
                 this.Close();
                 EntryForm.instance.Hide();
-
             }
         }
 

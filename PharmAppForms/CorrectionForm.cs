@@ -15,13 +15,16 @@ namespace PharmApp
         DbConnector2 OurConnection = new DbConnector2();
         public static CorrectionForm instance;
 
+        FormClosedEventHandler formClosedEventHandler;
+
         public string rid { get; set; }
         public CorrectionForm(string RID)
         {
             rid = RID;
             InitializeComponent();
             instance = this;
-            this.FormClosed += new FormClosedEventHandler(OurConnection.Form_FormClosed);
+            formClosedEventHandler = new FormClosedEventHandler(OurConnection.Form_FormClosed);
+            this.FormClosed += formClosedEventHandler;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -57,8 +60,9 @@ namespace PharmApp
                 this.Close();
 
             }
-            else
+            else // none checked
             {
+                this.FormClosed -= formClosedEventHandler;
                 ValidationForm.instance.Show();
                 this.Close();
             }
