@@ -61,6 +61,7 @@ namespace PharmApp
             {
                 ValidationForm.instance.Show();
                 this.Close();
+                EntryForm.instance.Hide();
             }
         }
     }
