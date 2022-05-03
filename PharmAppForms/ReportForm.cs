@@ -51,18 +51,47 @@ namespace PharmApp
         {
             //input verification
             double verifiedRl;
-            bool successfulRl = double.TryParse(textBox1.Text, out verifiedRl);
+            bool successfulRl = double.TryParse(textBox2.Text, out verifiedRl);
 
             double verifiedQl;
-            bool successfulQl = double.TryParse(textBox2.Text, out verifiedQl);
+            bool successfulQl = double.TryParse(textBox1.Text, out verifiedQl);
 
             if (comboBox1.SelectedItem == null) { return; }
-            if (!successfulRl ) { return; }
-            if (!successfulQl) { return; }
-            if (verifiedRl >= 10) { return; }
-            if ( (verifiedQl < verifiedRl) && (verifiedQl > 10) ) { return; }
-            if (verifiedRl == verifiedQl) { return; }
-            if (comboBox1.SelectedItem == null) { return; }
+            if (!successfulRl ) 
+            {
+                MessageBox.Show("Please enter valid Reporting Limit ");
+                return;
+            }
+            if (!successfulQl) 
+            {
+                MessageBox.Show("Please enter valid Quantification Limit ");
+                return; 
+            }
+            if (verifiedRl >= 10) 
+            {
+                MessageBox.Show("Please enter valid Reporting Limit under 10 ");
+                return; 
+            }
+            if (verifiedRl < 0)
+            {
+                MessageBox.Show("Please enter valid Reporting Limit above 0 ");
+                return;
+            }
+            if (verifiedQl < verifiedRl)  
+            {
+                MessageBox.Show("Please enter valid Quantification limit larger than your Reporting Limit ");
+                return;
+            }
+            if (verifiedQl >= 10)
+            {
+                MessageBox.Show("Please enter valid Quantification limit smaller than 10 ");
+                return;
+            }
+            if (verifiedRl == verifiedQl) 
+            {
+                MessageBox.Show("Your Reporting and Quantification Limit cannot be equal ");
+                return;
+            }
             if (textBox1.Text == "" || textBox1.Text == "Quantification Limit")
             {
                 MessageBox.Show("Please enter a qualification limit.");
@@ -128,6 +157,11 @@ namespace PharmApp
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

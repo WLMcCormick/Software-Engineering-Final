@@ -13,7 +13,7 @@ namespace PharmApp
     public class DbConnector2
     {
         MySqlDataAdapter adapt;
-        const string pwd = "Daisy23**";
+        const string pwd = "password";
         public MySqlConnectionStringBuilder connBuilder()
         {
             MySqlConnectionStringBuilder connString = new MySqlConnectionStringBuilder();

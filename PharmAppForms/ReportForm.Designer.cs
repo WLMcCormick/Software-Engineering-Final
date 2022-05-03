@@ -69,6 +69,7 @@
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "Quantification Limit";
             this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
