@@ -73,6 +73,7 @@ namespace PharmApp
             }
 
         }
+
         public float[] GetRLQL(string reportId)
         {
             float rl = 0;
@@ -84,8 +85,9 @@ namespace PharmApp
                 try
                 {
                     //get rl
-                    string rl_sql = "SELECT `reports`.`RL` FROM `pharmacydb`.`reports`WHERE `ReportID` = " + reportId + ";";
+                    string rl_sql = "SELECT `reports`.`RL` FROM `pharmacydb`.`reports`WHERE `ReportID` = @reportID";
                     MySqlCommand cmd = new MySqlCommand(rl_sql, conn);
+                    cmd.Parameters.AddWithValue("@reportID", reportId);
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
@@ -97,8 +99,9 @@ namespace PharmApp
                     rdr.Close();
 
                     //get ql
-                    rl_sql = "SELECT `reports`.`QL` FROM `pharmacydb`.`reports`WHERE `ReportID` = " + reportId + ";";
+                    rl_sql = "SELECT `reports`.`QL` FROM `pharmacydb`.`reports`WHERE `ReportID` = @reportID";
                     cmd = new MySqlCommand(rl_sql, conn);
+                    cmd.Parameters.AddWithValue("@reportID", reportId);
                     rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
@@ -167,8 +170,9 @@ namespace PharmApp
 
                     //get the rl value;
                     float rl = 0;
-                    string rl_sql = "SELECT `reports`.`RL` FROM `pharmacydb`.`reports`WHERE `ReportID` = " + Reportid + ";";
+                    string rl_sql = "SELECT `reports`.`RL` FROM `pharmacydb`.`reports`WHERE `ReportID` = @reportID";
                     MySqlCommand cmd = new MySqlCommand(rl_sql, conn);
+                    cmd.Parameters.AddWithValue("@reportID", Reportid);
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
@@ -182,8 +186,9 @@ namespace PharmApp
 
                     //get all the hplc values that are above the rl, goes in column 3
                     float hplc_sum = 0;
-                    string hplc_sql = "SELECT `hplc_values`.`HPLC_values` FROM `hplc_values` WHERE `hplc_values`.`HPLC_values` > " + rl + ";";
+                    string hplc_sql = "SELECT `hplc_values`.`HPLC_values` FROM `hplc_values` WHERE `hplc_values`.`HPLC_values` > @RL";
                     cmd = new MySqlCommand(hplc_sql, conn);
+                    cmd.Parameters.AddWithValue("@RL", rl);
                     rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
@@ -353,58 +358,58 @@ namespace PharmApp
             }
         }
 
-        public string getHighlightedIDSAboveQL(string qL)
-        {
-            //Returns IDS for hplc above qL
-            using (MySqlConnection conn = new MySqlConnection(connBuilder().ToString()))
-            {
-                conn.Open();
-                try
-                {
-                    string sql = "SELECT id FROM pharmacydb.hplc_values WHERE HPLC_values > " + qL + ";";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    MySqlDataReader rdr = cmd.ExecuteReader();
+        //public string getHighlightedIDSAboveQL(string qL)
+        //{
+        //    //Returns IDS for hplc above qL
+        //    using (MySqlConnection conn = new MySqlConnection(connBuilder().ToString()))
+        //    {
+        //        conn.Open();
+        //        try
+        //        {
+        //            string sql = "SELECT id FROM pharmacydb.hplc_values WHERE HPLC_values > " + qL + ";";
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //            MySqlDataReader rdr = cmd.ExecuteReader();
 
-                    while (rdr.Read())
-                    {
-                        Console.WriteLine(rdr["id"].ToString());
-                    }
-                    rdr.Close();
-                    return "done";
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.ToString());
+        //            while (rdr.Read())
+        //            {
+        //                Console.WriteLine(rdr["id"].ToString());
+        //            }
+        //            rdr.Close();
+        //            return "done";
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw new Exception(ex.ToString());
 
-                }
-            }
-        }
-        public string getHighlightedIDSInbetween(string qL, string rL)
-        {
-            //Returns IDS for hplc between qL and rL
-            using (MySqlConnection conn = new MySqlConnection(connBuilder().ToString()))
-            {
-                conn.Open();
-                try
-                {
-                    string sql = "SELECT id FROM pharmacydb.hplc_values WHERE HPLC_values < " + qL + " AND HPLC_values > " + rL + ";";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    MySqlDataReader rdr = cmd.ExecuteReader();
+        //        }
+        //    }
+        //}
+        //public string getHighlightedIDSInbetween(string qL, string rL)
+        //{
+        //    //Returns IDS for hplc between qL and rL
+        //    using (MySqlConnection conn = new MySqlConnection(connBuilder().ToString()))
+        //    {
+        //        conn.Open();
+        //        try
+        //        {
+        //            string sql = "SELECT id FROM pharmacydb.hplc_values WHERE HPLC_values < " + qL + " AND HPLC_values > " + rL + ";";
+        //            MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //            MySqlDataReader rdr = cmd.ExecuteReader();
 
-                    while (rdr.Read())
-                    {
-                        Console.WriteLine(rdr["id"].ToString());
-                    }
-                    rdr.Close();
-                    return "done";
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.ToString());
+        //            while (rdr.Read())
+        //            {
+        //                Console.WriteLine(rdr["id"].ToString());
+        //            }
+        //            rdr.Close();
+        //            return "done";
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw new Exception(ex.ToString());
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         public void updateReportStatus(string rID, string status)
         {
